@@ -4,9 +4,14 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@002fdce3c6a235733a90a27c80493a3241e56863 # v2.12.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@61b9e3751b92087fd0b06925ba6dd6314e06f089 # master
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python-3.7@master
+        uses: snyk/actions/python-3.7@cdb760004ba9ea4d525f2e043745dfe85bb9077e # master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
