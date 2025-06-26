@@ -1,4 +1,4 @@
-FROM python:3.7.5-buster
+FROM python:3.7.5-buster@sha256:f2b8ab91d713a2556c217987835696fe068adf201891736fe3c4af0a100425f2
 
 # set up the psycopg2
 # set up the psycopg2
